@@ -22,11 +22,6 @@ describe('Music Player', () => {
         cy.get('i.fa-play', { timeout: 10000 }).should('be.visible');
     });
 
-    it('should skip to the next track', () => {
-        cy.get('.skip-forward').click();
-        cy.get('.audio-title').should('contain.text', 'Let me love you');
-        cy.get('.audio-singer').should('contain.text', 'DJ Snake/Justin Beiber');
-    });
 
     // it('should skip to the previous track', () => {
     //     cy.get('.skip-previous').click();
@@ -53,7 +48,7 @@ describe('Music Player', () => {
     });
 });
 
-describe('Previous track checking', () => {
+describe('track skipping', () => {
     beforeEach(() => {
         cy.visit('index.html'); 
         cy.viewport(1280, 720);
@@ -74,6 +69,11 @@ describe('Previous track checking', () => {
         cy.get('.audio-title').should('contain.text', 'Let me down slowly');
         
         cy.get('.audio-singer').should('contain.text', 'Alec Benjamin');
+    });
+    it('should skip to the next track', () => {
+        cy.get('.skip-forward').click();
+        cy.get('.audio-title').should('contain.text', 'Let me love you');
+        cy.get('.audio-singer').should('contain.text', 'DJ Snake/Justin Beiber');
     });
 });
 
