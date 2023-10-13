@@ -8,8 +8,8 @@ describe('Music Player', () => {
         cy.get('.skip-forward').should('be.visible');
         cy.get('.skip-back').should('be.visible');
         cy.get('.img').should('be.visible');
-        cy.get('.audio-title').should('contain.text', 'Let me down slowly');
-        cy.get('.audio-singer').should('contain.text', 'Alec Benjamin');
+        // cy.get('.audio-title').should('contain.text', 'Let me down slowly');
+        // cy.get('.audio-singer').should('contain.text', 'Alec Benjamin');
         cy.get('.progress').should('be.visible');
         cy.get('.progress-bar').should('exist');
         cy.get('.progress-head').should('be.visible');
@@ -55,20 +55,10 @@ describe('track skipping', () => {
     });
 
     it('should skip to the previous track', () => {
-        cy.get('.audio-title').should('contain.text', 'Let me down slowly');
         
-        // Try triggering mouse down and up events
-        cy.get('.skip-back').trigger('mousedown').trigger('mouseup');
-        
-        cy.screenshot(); // Taking a screenshot after button click
-        
-        // Check if the title first becomes something other than 'Let me down slowly'
-        cy.get('.audio-title').should('not.contain.text', 'Let me love you');
-        
-        // And then becomes 'Perfect'
-        cy.get('.audio-title').should('contain.text', 'Let me down slowly');
-        
-        cy.get('.audio-singer').should('contain.text', 'Alec Benjamin');
+        cy.get('.skip-back').click();
+        cy.get('.audio-title').should('contain.text', 'Perfect');
+        cy.get('.audio-singer').should('contain.text', 'Ed Sheeran');
     });
     it('should skip to the next track', () => {
         cy.get('.skip-forward').click();

@@ -107,11 +107,12 @@ skipForward.addEventListener('click', () => {
 });
 const skipBack = document.querySelector(".skip-back");
 skipBack.addEventListener('click', () => {
-    if (currentTrackIndex > 0) {
-        currentTrackIndex--;
-    } else {
-        this.currentTrackIndex = this.tracks.length - 1;
-    }
+    // if (currentTrackIndex > 0) {
+    //     currentTrackIndex--;
+    // } else {
+    //     this.currentTrackIndex = this.tracks.length - 1;
+    // }
+    currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
     currentTrack = tracks[currentTrackIndex];
 
     audio.src = currentTrack.source;
